@@ -2,8 +2,8 @@
 
 #define MAX_VAL 750
 
-int main(int, char**)
-{
+int main(void) {
+    
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
 
@@ -30,17 +30,18 @@ int main(int, char**)
     try {
         numbers[-2] = 0;
     } catch(const exception& e) {
-        cerr << e.what() << endl;
+        cerr << "Caught exception: " << e.what() << endl;
     }
     try {
         numbers[MAX_VAL] = 0;
     } catch(const exception& e) {
-        cerr << e.what() << endl;
+        cerr << "Caught exception: " << e.what() << endl;
     }
 
     for (int i = 0; i < MAX_VAL; i++) {
         numbers[i] = rand();
     }
-    delete [] mirror;
+
+    delete[] mirror;
     return 0;
 }
