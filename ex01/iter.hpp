@@ -28,9 +28,10 @@ void squareOfN(T& n){
     n *= n;
 }
 
-template<typename T>
-void iter(T* array, size_t n, void (*func)(T &)){
+template<typename T, typename Y >
+void iter(T* array, size_t n, void (*func)(Y&)){
     for (size_t i = 0; i < n; ++i) {
         func(array[i]);
     }
 }
+
