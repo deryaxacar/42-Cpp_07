@@ -15,9 +15,9 @@
 int main()
 {
     int iArr[5] = {1, 2, 3, 4, 5};
-    ::iter(iArr, 5, squareOfN);
-    ::iter(iArr, 5, printArr);
+    ::iter<int,int>(iArr, 5, squareOfN);
+    ::iter<int,int>(iArr, 5, printArr);
 
     string sArr[5] = {"foo", "bar", "baz", "foobar", "foobazz"};
-    ::iter(sArr, 5, printArr);
+    ::iter<string, string>(sArr, 5, printArr);
 }
