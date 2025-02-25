@@ -25,7 +25,7 @@ class Array {
 		T	*number;
 		unsigned int	len;
 	public:
-		Array() : number(NULL), len(0) {}
+		Array() : number(new T[0]), len(0) {}
 
 		Array(unsigned int n) : len(n) {
 			number = new T[len];
