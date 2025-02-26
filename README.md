@@ -241,12 +241,12 @@ Genel bir Array<T> sınıfı oluşturulur. Temel özellikler:
     
 - **unsigned int n Parametreli Kurucu**
   - `n` adet elemandan oluşan bir dizi oluşturur.
-  - ```cpp
+  - ```hpp
     Array(unsigned int n) : len(n) {
-  	number = new T[len];
-  	for (unsigned int i = 0; i < len; ++i) {
-  		number[i] = T();
-  	}
+	  	number = new T[len];
+	  	for (unsigned int i = 0; i < len; ++i) {
+	  		number[i] = T();
+	  	}
     }
     ```
 
@@ -255,24 +255,24 @@ Genel bir Array<T> sınıfı oluşturulur. Temel özellikler:
   - Kopyalama veya atama sonrasında, orijinal dizi ya da kopya üzerinde yapılan değişikliklerin birbirini etkilememesi (yani derin kopya - deep copy yapılması).
   - ```cpp
     Array(const Array<T>& other) : len() {
-  	number = new T[len];
-  	for (unsigned int i = 0; i < len; ++i) {
-  		number[i] = other.number[i];
-  	}
+	  	number = new T[len];
+	  	for (unsigned int i = 0; i < len; ++i) {
+	  		number[i] = other.number[i];
+	  	}
     }
     ```
 
   - ```cpp
     Array<T>& operator=(const Array<T>& other) {
-	if (this != &other) {
-		delete[] number;
-		len = other.len;
-		number = new T[len];
-		for (unsigned int i = 0; i < len; ++i) {
-			number[i] = other.number[i];
+		if (this != &other) {
+			delete[] number;
+			len = other.len;
+			number = new T[len];
+			for (unsigned int i = 0; i < len; ++i) {
+				number[i] = other.number[i];
+			}
 		}
-	}
-	return *this;
+		return *this;
     }
     ```
 
@@ -286,10 +286,10 @@ Genel bir Array<T> sınıfı oluşturulur. Temel özellikler:
   - Eğer geçersiz bir indeks (`out of bounds`) ile erişilmeye çalışılırsa `std::exception` fırlatılmalıdır.
   - ```cpp
     T& operator[](unsigned int index) {
-  	if (index >= len) {
-  		throw std::out_of_range("Index out of range");
-  	}
-  	return number[index];
+	  	if (index >= len) {
+	  		throw std::out_of_range("Index out of range");
+	  	}
+	  	return number[index];
     }
     ```
 
@@ -298,7 +298,7 @@ Genel bir Array<T> sınıfı oluşturulur. Temel özellikler:
   - Bu fonksiyon, mevcut nesneyi (diziyi) değiştirmez, sadece boyut bilgisini döndürür.
   - ```cpp
     unsigned int size() const {
-  	return len;
+  		return len;
     }
     ```
 
