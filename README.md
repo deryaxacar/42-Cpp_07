@@ -242,38 +242,38 @@ Genel bir Array<T> sınıfı oluşturulur. Temel özellikler:
 - **unsigned int n Parametreli Kurucu**
   - `n` adet elemandan oluşan bir dizi oluşturur.
   - ```cpp
-    		Array(unsigned int n) : len(n) {
-  			number = new T[len];
-  			for (unsigned int i = 0; i < len; ++i) {
-  				number[i] = T();
-  			}
-  		}
+    Array(unsigned int n) : len(n) {
+  	number = new T[len];
+  	for (unsigned int i = 0; i < len; ++i) {
+  		number[i] = T();
+  	}
+    }
     ```
 
 - **Kopya Kurucu ve Atama Operatörü (Copy Constructor & Assignment Operator)**
   - Sınıfın bir başka Array örneğinden kopya edilerek yeni bir örnek oluşturulabilmesi.
   - Kopyalama veya atama sonrasında, orijinal dizi ya da kopya üzerinde yapılan değişikliklerin birbirini etkilememesi (yani derin kopya - deep copy yapılması).
   - ```cpp
-    		Array(const Array<T>& other) : len() {
-  			number = new T[len];
-  			for (unsigned int i = 0; i < len; ++i) {
-  				number[i] = other.number[i];
-  			}
-  		}
+    Array(const Array<T>& other) : len() {
+  	number = new T[len];
+  	for (unsigned int i = 0; i < len; ++i) {
+  		number[i] = other.number[i];
+  	}
+    }
     ```
 
   - ```cpp
-    		Array<T>& operator=(const Array<T>& other) {
-			if (this != &other) {
-				delete[] number;
-				len = other.len;
-				number = new T[len];
-				for (unsigned int i = 0; i < len; ++i) {
-					number[i] = other.number[i];
-				}
-			}
-			return *this;
+    Array<T>& operator=(const Array<T>& other) {
+	if (this != &other) {
+		delete[] number;
+		len = other.len;
+		number = new T[len];
+		for (unsigned int i = 0; i < len; ++i) {
+			number[i] = other.number[i];
 		}
+	}
+	return *this;
+    }
     ```
 
 - **Bellek Yönetimi**
@@ -285,21 +285,21 @@ Genel bir Array<T> sınıfı oluşturulur. Temel özellikler:
   - Dizi elemanlarına `[ ]` ile erişimi mümkün kılın.
   - Eğer geçersiz bir indeks (`out of bounds`) ile erişilmeye çalışılırsa `std::exception` fırlatılmalıdır.
   - ```cpp
-    		T& operator[](unsigned int index) {
-  			if (index >= len) {
-  				throw std::out_of_range("Index out of range");
-  			}
-  			return number[index];
-  		}
+    T& operator[](unsigned int index) {
+  	if (index >= len) {
+  		throw std::out_of_range("Index out of range");
+  	}
+  	return number[index];
+    }
     ```
 
 - **size() Fonksiyonu**
   - Dizideki eleman sayısını döndüren, parametresiz bir fonksiyon yazın.
   - Bu fonksiyon, mevcut nesneyi (diziyi) değiştirmez, sadece boyut bilgisini döndürür.
   - ```cpp
-    		unsigned int size() const {
-  			return len;
-  		}
+    unsigned int size() const {
+  	return len;
+    }
     ```
 
 Böylece `std::vector` gibi bir yapı yerine kendi `template` tabanlı dinamik dizi sınıfımızı yazmış oluyoruz.
