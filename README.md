@@ -25,9 +25,9 @@ C++'da şablonlar (`templates`), farklı veri türleriyle çalışabilen genel (
 
 Şablonlar iki ana kategoriye ayrılır:
 
-- 1. Fonksiyon Şablonları (Function Templates)
+- Fonksiyon Şablonları (Function Templates)
 
-- 2. Sınıf Şablonları (Class Templates)
+- Sınıf Şablonları (Class Templates)
 
 <a name="function-templates"></a>
 ### Fonksiyon Şablonları (Function Templates)
@@ -192,9 +192,40 @@ Buradaki amaç, şablon fonksiyonların her tür (`int`, `string` vs.) ile nası
     max(c, d) = chaine2
     ```
 
+**Önemli:** Gelen değerlendirmeci evosheet sayfasında verilen test kodunu indirip sizin kodunuzda çalıştırmalıdır eğer yazdığınız kodda herhangi bir sorun yoksa kod başarılı şekilde çalışıcaktır. 
+test kodlarını (`ex00.cpp` ve `ex01.cpp`) egzersizlerin dışına bırakıyorum.
+
 ---
 
+<a name="ex01"></a>
+### Ex01 -  Iter
 
+- `iter` isminde bir şablon (`template`) fonksiyon yazın.
+
+- Bu fonksiyon 3 parametre almalı ve geriye değer döndürmemelidir (`void`).
+  - Dizi adresi (yani bir pointer, örneğin `T *array`)
+  - Dizinin uzunluğu (örneğin `int length`)
+  - Dizinin her bir elemanı için çağrılacak bir fonksiyon (örneğin `void function(const T&)`)
+
+- `iter` fonksiyonunuz herhangi bir türdeki dizi ile çalışabilmelidir.
+
+- Üçüncü parametre (çağrılacak fonksiyon), bir fonksiyon şablonu olmalıdır.
+
+- ```cpp
+  template<typename T, typename Y >
+  void iter(T* array, size_t n, void (*func)(Y&)){
+      // Dizi boyunca döngü oluşturur.
+      for (size_t i = 0; i < n; ++i) {
+          // Her bir dizi elemanı için verilen fonksiyonu çağırır.
+          func(array[i]);
+      }
+  }
+  ```
+
+- `template<typename T, typename Y >`: Bu şablon (template) tanımı, iter fonksiyonunun farklı veri türleriyle çalışabilmesini sağlar. T ve Y şablon parametreleri, fonksiyonun farklı türlerdeki diziler ve fonksiyonlarla çalışabilmesine olanak tanır.
+
+**Önemli:** Gelen değerlendirmeci evosheet sayfasında verilen test kodunu indirip sizin kodunuzda çalıştırmalıdır eğer yazdığınız iter fonksiyon şablonunda herhangi bir sorun yoksa kod başarılı şekilde çalışıcaktır. 
+test kodlarını (`ex00.cpp` ve `ex01.cpp`) egzersizlerin dışına bırakıyorum.
 
 ---
 
