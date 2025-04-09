@@ -46,6 +46,7 @@ int main(int, char **)
     catch (const std::exception &e)
     {
         std::cerr << e.what() << '\n';
+        return 1;
     }
     try
     {
@@ -54,6 +55,7 @@ int main(int, char **)
     catch (const std::exception &e)
     {
         std::cerr << e.what() << '\n';
+        return 1;
     }
 
     for (int i = 0; i < MAX_VAL; i++)
